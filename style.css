@@ -198,30 +198,13 @@ footer {
 }
 
 
-@media (max-width: 1280px) {
-  #outdoor-img {
-    margin: 30px 40px;
-  }
-
-  .img-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 0 10px;
-  }
-
-  .img-text {
-    font-size: 15px;
-    padding-top: 6px;
-  }
-}
-
 @media (max-width: 1024px) {
   #outdoor-img {
     margin: 30px 24px;
   }
 
   .img-container {
-    grid-template-columns: repeat(3, 1fr); /* Still 3 images per row */
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 0;
   }
