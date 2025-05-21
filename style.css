@@ -13,6 +13,7 @@
 body {
   font-family: var(--primary-font);
   background-color: #fff3df;
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -28,9 +29,10 @@ body {
   display: flex;
   /* flex-wrap: wrap; #I don't think this matters at all*/
   justify-content: space-between;
-  margin: 30px 80px;
+  margin: 30px 40px;
   border-bottom: 1.5px solid #d0cabd;
   padding-bottom: 10px;
+  position: relative;
 }
 
 .profile-details {
@@ -41,52 +43,65 @@ body {
 }
 
 .edit {
-  width: 60%;
+  width: 55%;
   display: flex;
   justify-content: space-between;
   margin-top: 110px;
 }
 
-.post {
-  font-family: var(--primary-font);
-  width: 120px;
-  height: 50px;
-  background-color: #212121;
-  color: #ffff;
-  text-align: center;
-  align-content: center;
-  margin-top: 140px;
-  border-radius: 7px;
+.edit p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #212121;
 }
 
-.outline {
-  font-family: var(--primary-font);
-  color: white;
-  text-decoration: none;
+.post {
+  position: absolute;
+  right: 0px;
+  bottom: 20px;
+}
+
+.post button {
+  background-color: #212121;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fcf5e5;
+  border-radius: 8px;
+  gap: 8px;
+  border: none;
+  padding: 16px 30px;
 }
 
 .img-text {
   font-family: var(--primary-font);
-  width: 380px;
 }
 
 #outdoor-img {
-  margin: 30px 80px;
-}
-
-.image {
-  height: 380px;
-  width: 380px;
-  border-radius: 5px;
+  margin: 30px auto;
+  max-width: 1351px;
+  overflow-x: hidden;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 40px;
 }
 
 .img-container {
   display: grid;
-  grid-template-columns: 400px 400px 400px;
-  gap: 8px;
-  row-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 25px;
   border-bottom: 1px solid #d0cabd;
-  padding-bottom: 20px;
+  row-gap: 30px;
+}
+
+.image {
+  height: 380px;
+  border-radius: 5px;
+}
+
+.img-container img {
+  width: 100%;
+  border-radius: 8px;
 }
 
 span {
@@ -101,8 +116,6 @@ footer {
   color: #212121;
   margin-bottom: 40px;
 }
-
-
 
 @media (max-width: 540px) {
   #profile {
@@ -177,56 +190,5 @@ footer {
 
   footer {
     font-size: 14px;
-  }
-}
-
-@media (max-width: 1280px) {
-  #outdoor-img {
-    margin: 30px 40px;
-  }
-
-  .img-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 0 10px;
-  }
-
-  .img-text {
-    font-size: 15px;
-    padding-top: 6px;
-  }
-}
-
-
-@media (max-width: 1024px) {
-  #outdoor-img {
-    margin: 30px 24px;
-  }
-
-  .img-container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 0;
-  }
-
-  .image {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    display: block;
-  }
-
-  .img-text {
-    font-size: 14px;
-    width: 100%;
-    padding-top: 6px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-
-  footer {
-    padding: 16px 0;
-    font-size: 14px;
-    text-align: center;
   }
 }
