@@ -88,3 +88,32 @@ const renderCardImages = () => {
 
 renderCardImages();
 
+
+
+
+
+
+
+// New Post Modal Elements
+const newPostBtn = document.querySelector(".post button");
+const newPostModal = document.getElementById("newPostModal");
+const cancelPost = document.getElementById("cancelPost");
+const newPostForm = document.getElementById("newPostForm");
+const postTitleInput = document.getElementById("postTitle");
+const postImageInput = document.getElementById("postImage");
+
+// Open New Post Modal
+newPostBtn.addEventListener("click", () => {
+  newPostModal.style.display = "flex";
+  nonModals.classList.add("blurred");
+});
+
+// Cancel New Post 
+cancelPost.addEventListener("click", () => {
+  newPostModal.style.display = "none";
+  nonModals.classList.remove("blurred");
+  newPostForm.reset();
+});
+
+
+
