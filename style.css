@@ -75,6 +75,10 @@ body {
 .img-text {
   font-family: var(--primary-font);
 }
+.img-text span img:active {
+  transform: scale(0.9);
+  background-color: red;
+}
 
 #outdoor-img {
   margin: 30px auto;
@@ -117,6 +121,61 @@ footer {
   margin-bottom: 40px;
 }
 
+/*.modal-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  height: 400px;
+  width: 100%;
+  border: none;
+  border: 2px solid #212121;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(0.9);
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.modal-container div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  margin-bottom: 12px;
+}
+
+.modal-container div input {
+  width: 20em;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-container div label {
+  font-size: 18px;
+}
+
+.modal-container div input:focus {
+  border: 2px solid #332d2d;
+  outline: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-container div input::placeholder {
+  padding-left: 20px;
+} */
+
 @media (max-width: 540px) {
   #profile {
     flex-direction: column;
@@ -142,23 +201,43 @@ footer {
     justify-content: center;
     margin-top: 10px;
     gap: 8px;
+    margin: 0 auto;
+  }
+
+  .edit p {
+    font-size: 16px;
+    cursor: pointer;
   }
 
   .post {
-    margin-top: 0;
-    align-self: center;
+    margin-top: 12px;
+    margin-bottom: -10px;
     width: 100%;
+    display: flex;
+    justify-content: center;
     padding: 12px 0;
+    position: relative;
+  }
+
+  .post button {
+    width: 100%;
+  }
+
+  .edit p {
+    text-align: center;
   }
 
   #outdoor-img {
-    margin: 20px 16px;
+    margin: 20px 0;
+    width: 100%;
+    padding: 0 18px;
   }
 
   .img-container {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 30px;
     padding: 0;
   }
 
@@ -186,6 +265,11 @@ footer {
   .img-text span img {
     width: 16px;
     height: 16px;
+  }
+
+  .img-text span img:active {
+    transform: scale(0.9);
+    color: red;
   }
 
   footer {
