@@ -82,7 +82,36 @@ const renderCardImages = () => {
       }
     });
 
-    // Start here Temi
+     imgContainer.addEventListener("click", function (e) {
+      const target = e.target;
+
+      if (target.classList.contains("image")) {
+        const caption =
+          target.nextElementSibling?.innerText?.trim() || "Image Preview";
+
+        previewImage.src = target.src;
+        previewTitle.innerText = caption;
+
+        imageModal.style.display = "flex";
+        nonModals.classList.add("blurred");
+      }
+    });
+
+    closeImageModal.addEventListener("click", () => {
+      imageModal.style.display = "none";
+      nonModals.classList.remove("blurred");
+    });
+
+    window.addEventListener("click", function (e) {
+      if (e.target === imageModal) {
+        imageModal.style.display = "none";
+        nonModals.classList.remove("blurred");
+      }
+    });
+  
+
+renderCardImages();
+
   });
 };
 
