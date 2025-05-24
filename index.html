@@ -8,37 +8,38 @@
   </head>
 
   <body>
-    <header class="navbar">
-      <div id="logo">
-        <img src="assets/Logo.svg" alt="logo-image" />
-      </div>
-    </header>
+    <div class="non-modals">
+      <header class="navbar">
+        <div id="logo">
+          <img src="assets/Logo.svg" alt="logo-image" />
+        </div>
+      </header>
 
-    <main class="container">
-      <section id="profile">
-        <div class="profile-details">
-          <div class="profile-img">
-            <img src="assets/Avatar.png" alt="profile-image" />
-          </div>
-          <div class="details">
-            <h1>Bessie Coleman</h1>
-            <p>Civil Aviator</p>
-            <div class="edit">
-              <img src="assets/Group 2.svg" alt="edit-icon" />
-              <p>Edit Profile</p>
+      <main class="container">
+        <section id="profile">
+          <div class="profile-details">
+            <div class="profile-img">
+              <img src="assets/Avatar.png" alt="profile-image" />
+            </div>
+            <div class="details">
+              <h1>Bessie Coleman</h1>
+              <p>Civil Aviator</p>
+              <div class="edit">
+                <img src="assets/Group 2.svg" alt="edit-icon" />
+                <p>Edit Profile</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="post">
-          <button>
-            <img src="assets/Group 26.svg" alt="plus-sign" /> New Post
-          </button>
-        </div>
-      </section>
-    </main>
+          <div class="post">
+            <button>
+              <img src="assets/Group 26.svg" alt="plus-sign" /> New Post
+            </button>
+          </div>
+        </section>
+      </main>
 
-    <!--<section id="modal">
+      <!--<section id="modal">
       <div class="modal-container">
         <div class="name-div">
           <label for="name-input">Username</label>
@@ -70,14 +71,110 @@
       </div>
     </section> -->
 
-    <section id="outdoor-img">
-      <div class="img-container"></div>
-    </section>
+      <section id="outdoor-img">
+        <div class="img-container"></div>
+      </section>
 
-    <footer>
-      <p>2023 &copy Spots</p>
-    </footer>
+      <footer>
+        <p>2023 &copy Spots</p>
+      </footer>
+    </div>
 
-    <script type="module" src="script.js"></script>
+    <!-- Modal Markup that would be initially hidden -->
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay" id="editModal">
+      <div class="new-post-modal">
+        <div class="modal-content">
+          <h2>Edit Profile</h2>
+          <form id="editForm">
+            <label for="name">
+              Name
+              <input
+                type="text"
+                id="name"
+                name="name"
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span class="error-message" id="nameError"></span>
+            </label>
+
+            <label for="title">
+              Title
+              <input
+                type="text"
+                id="title"
+                name="title"
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span class="error-message" id="titleError"></span>
+            </label>
+
+            <label for="avatar">
+              Upload New Avatar
+              <input type="file" id="avatar" name="avatar" accept="image/*" />
+            </label>
+
+            <div class="modal-buttons">
+              <button type="submit" class="update">Update</button>
+              <button type="button" id="cancelEdit">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image-Card Modal -->
+    <div id="imageModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeImageModal">&times;</span>
+        <img id="previewImage" src="" alt="Preview" />
+        <div id="previewTitle"></div>
+      </div>
+    </div>
+
+    <!-- New Post Modal -->
+    <div id="newPostModal" class="new-post">
+      <div class="modal-space">
+        <div class="modal-content">
+          <h2>New Post</h2>
+          <form id="newPostForm">
+            <label for="postTitle">
+              Title
+              <input
+                type="text"
+                id="postTitle"
+                name="postTitle"
+                minlength="2"
+                maxlength="100"
+                required
+              />
+            </label>
+
+            <label for="postImage">
+              Upload Image
+              <input
+                type="file"
+                id="postImage"
+                name="postImage"
+                accept="image/*"
+                required
+              />
+            </label>
+
+            <div class="modal-buttons">
+              <button type="submit">Post</button>
+              <button type="button" id="cancelPost">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>

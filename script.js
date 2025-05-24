@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Default HTML ELements
 const imgSection = document.querySelector("#outdoor-img");
 const imgContainer = document.querySelector(".img-container");
@@ -7,6 +6,7 @@ const nonModals = document.querySelector(".non-modals");
 // Edit Profile Modal Elements
 const editBtn = document.querySelector(".edit");
 const editModal = document.getElementById("editModal");
+editModal.style.display = "none"
 const cancelEdit = document.getElementById("cancelEdit");
 const form = document.getElementById("editForm");
 
@@ -82,172 +82,9 @@ const renderCardImages = () => {
       }
     });
 
-    imgContainer.addEventListener("click", function (e) {
-      const target = e.target;
-
-      if (target.classList.contains("image")) {
-        const caption =
-          target.nextElementSibling?.innerText?.trim() || "Image Preview";
-
-        previewImage.src = target.src;
-        previewTitle.innerText = caption;
-
-        imageModal.style.display = "flex";
-        nonModals.classList.add("blurred");
-      }
-    });
-
-    closeImageModal.addEventListener("click", () => {
-      imageModal.style.display = "none";
-      nonModals.classList.remove("blurred");
-    });
-
-    window.addEventListener("click", function (e) {
-      if (e.target === imageModal) {
-        imageModal.style.display = "none";
-        nonModals.classList.remove("blurred");
-      }
-    });
+    // Start here Temi
   });
 };
 
 renderCardImages();
 
-editBtn.addEventListener("click", () => {
-  editModal.style.display = "block";
-  nameInput.value = nameDisplay.textContent;
-  titleInput.value = titleDisplay.textContent;
-  avatarInput.value = avatarDisplay.textContent;
-  nonModals.classList.add("blurred");
-});
-
-cancelEdit.addEventListener("click", () => {
-  editModal.style.display = "none";
-  nonModals.classList.remove("blurred");
-});
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const name = document.getElementById("name");
-  const title = document.getElementById("title");
-  const nameError = document.getElementById("nameError");
-  const titleError = document.getElementById("titleError");
-
-  let valid = true;
-
-  if (name.value.trim().length < 2) {
-    nameError.innerText = "Name must be at least 2 characters";
-    valid = false;
-  } else {
-    nameError.innerText = "";
-  }
-
-  if (title.value.trim().length < 2) {
-    titleError.innerText = "Title must be at least 2 characters";
-    valid = false;
-  } else {
-    titleError.innerText = "";
-  }
-
-  if (valid) {
-    // Update profile info
-    document.querySelector("h1").innerText = name.value;
-    document.querySelector("#profile p").innerText = title.value;
-
-    // Update profile image if file is selected
-    if (avatarInput.files[0]) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        avatarDisplay.src = e.target.result;
-      };
-      reader.readAsDataURL(avatarInput.files[0]);
-    }
-
-    editModal.style.display = "none";
-    nonModals.classList.remove("blurred");
-  }
-});
-
-// New Post Modal Elements
-const newPostBtn = document.querySelector(".post button");
-const newPostModal = document.getElementById("newPostModal");
-const cancelPost = document.getElementById("cancelPost");
-const newPostForm = document.getElementById("newPostForm");
-const postTitleInput = document.getElementById("postTitle");
-const postImageInput = document.getElementById("postImage");
-
-// Open New Post Modal
-newPostBtn.addEventListener("click", () => {
-  newPostModal.style.display = "flex";
-  nonModals.classList.add("blurred");
-});
-
-// Cancel New Post
-cancelPost.addEventListener("click", () => {
-  newPostModal.style.display = "none";
-  nonModals.classList.remove("blurred");
-  newPostForm.reset();
-});
-
-// Handle New Post Submission
-newPostForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const title = postTitleInput.value.trim();
-  const file = postImageInput.files[0];
-
-  if (file && title) {
-    const reader = new FileReader();
-    reader.onload = function () {
-      const imageUrl = reader.result;
-
-      const card = document.createElement("div");
-      card.innerHTML = `
-        <img src="${imageUrl}" class="image" alt="${title}" />
-        <p class="img-text">
-          ${title}
-          <span><img src="assets/Union.png" alt="like-icon" class="like" /></span>
-        </p>
-      `;
-      imgContainer.appendChild(card);
-
-      const likeImg = card.querySelector(".like");
-      likeImg.addEventListener("click", (e) => {
-        e.stopPropagation();
-        if (likeImg.src.includes("Union.png")) {
-          likeImg.src = "assets/heart.png";
-        } else {
-          likeImg.src = "assets/Union.png";
-        }
-      });
-
-      newPostModal.style.display = "none";
-      nonModals.classList.remove("blurred");
-      newPostForm.reset();
-    };
-    reader.readAsDataURL(file);
-  }
-});
-=======
-import { restaurants } from "./restaurants.js";
-
-renderImages();
-function renderImages() {
-  restaurants.forEach((restaurant) => {
-    const imageContainer = document.querySelector(".img-container");
-
-    if (restaurants) {
-      const imageContain = document.createElement("div");
-      imageContain.innerHTML = `
-     <img src='${restaurant.image}'
-            class="image"/>
-          <p class="img-text">
-            ${restaurant.name}
-            <span><img src="${restaurant.icon}" alt="like-icon" /></span>
-          </p>
-    `;
-      imageContainer.appendChild(imageContain);
-    }
-  });
-}
->>>>>>> upstream/main
