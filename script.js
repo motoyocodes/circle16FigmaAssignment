@@ -167,3 +167,27 @@ if (valid) {
   editModal.style.display = 'none';
   nonModals.classList.remove('blurred');
 }
+// Handle New Post Submission
+newPostForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const title = postTitleInput.value.trim();
+  const file = postImageInput.files[0];
+
+  if (file && title) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      const imageUrl = reader.result;
+
+      const card = document.createElement("div");
+      card.innerHTML = `
+        <img src="${imageUrl}" class="image" alt="${title}" />
+        <p class="img-text">
+          ${title}
+          <span><img src="assets/Union.png" alt="like-icon" class="like" /></span>
+        </p>
+      `;
+            imgContainer.appendChild(card);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
