@@ -82,7 +82,6 @@ const renderCardImages = () => {
       }
     });
 
-    // Image modal logic (Temidayo)
     imgContainer.addEventListener("click", function (e) {
       const target = e.target;
 
@@ -114,7 +113,6 @@ const renderCardImages = () => {
 
 renderCardImages();
 
-// Edit profile modal Logic (Gloria)
 editBtn.addEventListener("click", () => {
   editModal.style.display = "flex";
   console.log("clicked");
@@ -129,7 +127,6 @@ cancelEdit.addEventListener("click", () => {
   nonModals.classList.remove("blurred");
 });
 
-// Edit profile modal form logic (Peter)
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -154,7 +151,6 @@ form.addEventListener("submit", (e) => {
     titleError.innerText = "";
   }
 
-  //  Updating profile info logic (Lawrence)
   if (valid) {
     // Update profile info
     document.querySelector("h1").innerText = name.value;
@@ -174,7 +170,6 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-// New Post Modal Elements (odunayo)
 const newPostBtn = document.querySelector(".post button");
 const newPostModal = document.getElementById("newPostModal");
 const cancelPost = document.getElementById("cancelPost");
@@ -195,7 +190,6 @@ cancelPost.addEventListener("click", () => {
   newPostForm.reset();
 });
 
-// Handle New Post Submission (simi)
 newPostForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const title = postTitleInput.value.trim();
@@ -216,7 +210,6 @@ newPostForm.addEventListener("submit", (e) => {
       `;
       imgContainer.appendChild(card);
 
-      //   Like togglelogic for new post (Isaac)
       const likeImg = card.querySelector(".like");
       likeImg.addEventListener("click", (e) => {
         e.stopPropagation();
