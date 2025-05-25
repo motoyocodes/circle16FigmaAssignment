@@ -146,3 +146,25 @@ cancelPost.addEventListener("click", () => {
 
 
 
+
+ if (valid) {
+    // Update profile info
+    document.querySelector("h1").innerText = name.value;
+    document.querySelector("#profile p").innerText = title.value;
+
+    // Update profile image if file is selected
+    if (avatarInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        avatarDisplay.src = e.target.result;
+      };
+      reader.readAsDataURL(avatarInput.files[0]);
+    }
+
+    editModal.style.display = "none";
+    nonModals.classList.remove("blurred");
+  }
+});
+
+
+
