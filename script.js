@@ -149,24 +149,50 @@ cancelPost.addEventListener('click', () => {
   nonModals.classList.remove('blurred');
   newPostForm.reset();
 });
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-if (valid) {
-  // Update profile info
-  document.querySelector('h1').innerText = name.value;
-  document.querySelector('#profile p').innerText = title.value;
+  const name = document.getElementById("name");
+  const title = document.getElementById("title");
+  const nameError = document.getElementById("nameError");
+  const titleError = document.getElementById("titleError");
 
-  // Update profile image if file is selected
-  if (avatarInput.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      avatarDisplay.src = e.target.result;
-    };
-    reader.readAsDataURL(avatarInput.files[0]);
+  let valid = true;
+
+  if (name.value.trim().length < 2) {
+    nameError.innerText = "Name must be at least 2 characters";
+    valid = false;
+  } else {
+    nameError.innerText = "";
   }
 
-  editModal.style.display = 'none';
-  nonModals.classList.remove('blurred');
-}
+  if (title.value.trim().length < 2) {
+    titleError.innerText = "Title must be at least 2 characters";
+    valid = false;
+  } else {
+    titleError.innerText = "";
+  }
+
+  //  Updating profile info logic
+  if (valid) {
+    // Update profile info
+    document.querySelector("h1").innerText = name.value;
+    document.querySelector("#profile p").innerText = title.value;
+
+    // Update profile image if file is selected
+    if (avatarInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        avatarDisplay.src = e.target.result;
+      };
+      reader.readAsDataURL(avatarInput.files[0]);
+    }
+
+    editModal.style.display = "none";
+    nonModals.classList.remove("blurred");
+  }
+});
+
 // Handle New Post Submission
 newPostForm.addEventListener("submit", (e) => {
   e.preventDefault();
